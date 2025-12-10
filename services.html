@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Financial Physicals | Services & Leadership</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <div class="logo">
+        <span class="logo-mark">FP</span>
+        <div class="logo-text">
+          <span class="logo-title">FinancialPhysicals</span>
+          <span class="logo-subtitle">Real-World Insights, Real Impact</span>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="services.html" class="nav-link active">Services & Leadership</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- SERVICES -->
+    <section class="section">
+      <div class="container">
+        <h1>Services</h1>
+        <p class="section-intro">
+          We partner with stakeholders across healthcare, life sciences, and global health 
+          to design, analyze, and communicate real-world evidence that drives better decisions.
+        </p>
+
+        <div class="cards-grid">
+          <article class="card">
+            <h2>Real-World Evidence Consulting</h2>
+            <p>
+              End-to-end support for designing studies that leverage real-world data to 
+              answer clinically and economically meaningful questions.
+            </p>
+          </article>
+
+          <article class="card">
+            <h2>Real-World Data Analysis and Interpretation</h2>
+            <p>
+              Rigorous, transparent analytics that transform complex datasets into 
+              actionable evidence and clear narratives.
+            </p>
+          </article>
+
+          <article class="card">
+            <h2>Medical Writing</h2>
+            <p>
+              Structured, high-quality documents that communicate evidence with clarity 
+              and scientific rigor.
+            </p>
+          </article>
+
+          <article class="card">
+            <h2>Medical Communications</h2>
+            <p>
+              Tailored communication strategies that ensure insights reach the right 
+              audiences in impactful ways.
+            </p>
+          </article>
+
+          <article class="card">
+            <h2>Posters &amp; Presentations</h2>
+            <p>
+              Visually compelling posters and slide decks that bring data, evidence, 
+              and value stories to life at conferences and stakeholder meetings.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- DATA IMAGE BAND -->
+    <section class="section image-band">
+      <div class="image-band-overlay"></div>
+      <div class="container image-band-content">
+        <h2>Data-Driven. Patient-Centered. Globally Minded.</h2>
+        <p>
+          We believe that real-world insights are a gateway to innovation—connecting 
+          data, patients, and decision-makers in meaningful ways.
+        </p>
+      </div>
+    </section>
+
+    <!-- LEADERSHIP -->
+    <section class="section light">
+      <div class="container leadership-grid">
+        <div class="leadership-image-wrapper">
+          <img 
+            src="images/chioma-portrait-placeholder.jpg" 
+            alt="Portrait placeholder for Chioma Amadi-Mgbenka" 
+            class="leadership-image"
+          >
+        </div>
+        <div class="leadership-text">
+          <h1>Leadership</h1>
+          <h2>Chioma Amadi-Mgbenka</h2>
+          <p class="leadership-role">Founder &amp; Lead Epidemiologist</p>
+          <p>
+            Chioma Amadi-Mgbenka is an Epidemiologist by training with a background and 
+            experience in Informatics. She is passionate about generating evidence to 
+            inform patient outcomes. This led her to pursue related professional and 
+            academic endeavors over the last decade.
+          </p>
+          <p>
+            Originating from a resource-poor background, where vulnerable populations 
+            faced challenges accessing essential medicines and public health knowledge, 
+            she has dedicated her professional and academic pursuits to research and 
+            development in global settings.
+          </p>
+          <p>
+            Her overarching goal is to emerge as a well-rounded innovator committed to 
+            enhancing patient outcomes, particularly through real-world insights, which 
+            she believes are a gateway to innovation.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="section contact">
+      <div class="container contact-grid">
+        <div class="contact-text">
+          <h1>Contact Us</h1>
+          <p>
+            Have a project in mind? Need support with real-world data analysis, medical
+            writing, or insight generation?  
+            We’d love to hear from you.
+          </p>
+
+          <p class="contact-email">
+            Email: <a href="mailto:financialphysicals@gmail.com">financialphysicals@gmail.com</a>
+          </p>
+        </div>
+
+        <!-- IMPORTANT: replace the action URL with your own Formspree endpoint -->
+        <form 
+          class="contact-form" 
+          id="contact-form"
+          action="https://formspree.io/f/mrbnybwb" 
+          method="POST"
+        >
+          <label>
+            Full Name
+            <input type="text" name="name" required>
+          </label>
+
+          <label>
+            Email Address
+            <input type="email" name="email" required>
+          </label>
+
+          <label>
+            Your Message
+            <textarea name="message" rows="5" required></textarea>
+          </label>
+
+          <!-- Formspree recommends a real email field name -->
+          <input type="hidden" name="_subject" value="New message from FinancialPhysicals contact form">
+
+          <button type="submit" class="btn-primary contact-btn">Send Message</button>
+
+          <p id="form-status" class="form-status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>&copy; <span id="year"></span> FinancialPhysicals. All rights reserved.</p>
+      <p class="footer-domain">www.financialphysicals.com</p>
+    </div>
+    <script>
+      // Year in footer
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Contact form handling with Formspree
+      const form = document.getElementById('contact-form');
+      const statusEl = document.getElementById('form-status');
+
+      async function handleSubmit(event) {
+        event.preventDefault();
+        statusEl.textContent = "Sending...";
+        
+        const data = new FormData(form);
+
+        try {
+          const response = await fetch(form.action, {
+            method: form.method,
+            body: data,
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+
+          if (response.ok) {
+            statusEl.textContent = "Thank you! Your message has been sent.";
+            form.reset();
+          } else {
+            const resData = await response.json().catch(() => null);
+            statusEl.textContent = resData && resData.error
+              ? resData.error
+              : "Oops, something went wrong. Please try again.";
+          }
+        } catch (error) {
+          statusEl.textContent = "Network error. Please check your connection and try again.";
+        }
+      }
+
+      form.addEventListener('submit', handleSubmit);
+    </script>
+  </footer>
+</body>
+</html>
